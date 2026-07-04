@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Figtree } from 'next/font/google'
 import Script from 'next/script'
+import { SITE_URL } from '@/lib/site-config'
 import './globals.css'
 
 const figtree = Figtree({
@@ -9,10 +10,14 @@ const figtree = Figtree({
   weight: ['300', '400', '500', '600', '700', '800', '900'],
 })
 
+const title = 'A Moita — Refúgio Natural | Abadiânia-GO'
+const description =
+  'Refúgio de ecoturismo no Cerrado. Chalés exclusivos às margens do Rio Capivari, em Abadiânia-GO.'
+const ogImage = `${SITE_URL}/assets/branding/og-image.jpg`
+
 export const metadata: Metadata = {
-  title: 'A Moita — Refúgio Natural | Abadiânia-GO',
-  description:
-    'Refúgio de ecoturismo no Cerrado. Chalés exclusivos às margens do Rio Capivari, em Abadiânia-GO.',
+  title,
+  description,
   keywords: [
     'ecoturismo',
     'chalé cerrado',
@@ -23,17 +28,16 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'A Moita' }],
   alternates: {
-    canonical: 'https://www.moitanativa.com.br',
+    canonical: SITE_URL,
   },
   openGraph: {
-    title: 'A Moita — Refúgio Natural | Abadiânia-GO',
-    description:
-      'Refúgio de ecoturismo no Cerrado. Chalés exclusivos às margens do Rio Capivari, em Abadiânia-GO.',
-    url: 'https://www.moitanativa.com.br',
+    title,
+    description,
+    url: SITE_URL,
     siteName: 'A Moita',
     images: [
       {
-        url: 'https://www.moitanativa.com.br/assets/branding/og-image.jpg',
+        url: ogImage,
         width: 1200,
         height: 630,
         alt: 'A Moita — Refúgio Natural no Cerrado',
@@ -44,10 +48,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'A Moita — Refúgio Natural | Abadiânia-GO',
+    title,
     description:
       'Refúgio de ecoturismo no Cerrado. Chalés exclusivos às margens do Rio Capivari.',
-    images: ['https://www.moitanativa.com.br/assets/branding/og-image.jpg'],
+    images: [ogImage],
   },
 }
 
@@ -108,11 +112,7 @@ export default function RootLayout({
                     page_location: window.location.href,
                     custom_map: {
                       'custom_dimension_1': 'environment'
-                    }
-                  });
-                  
-                  // Set environment dimension
-                  gtag('config', '${GA_MEASUREMENT_ID}', {
+                    },
                     'environment': 'production'
                   });
                 `,

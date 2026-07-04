@@ -1,22 +1,27 @@
 import type { Metadata } from 'next'
+import { SITE_URL } from '@/lib/site-config'
 import ChaleAOrigemClient from './ChaleAOrigemClient'
 
+const title = 'Chalé A Origem — A Moita | Refúgio Natural'
+const description =
+  'Chalé exclusivo no Cerrado. 4 hóspedes, 2 quartos, vista para a natureza preservada. Reserve direto.'
+const url = `${SITE_URL}/chaleAOrigem`
+const ogImage = `${SITE_URL}/assets/branding/og-image.jpg`
+
 export const metadata: Metadata = {
-  title: 'Chalé A Origem — A Moita | Refúgio Natural',
-  description:
-    'Chalé exclusivo no Cerrado. 4 hóspedes, 2 quartos, vista para a natureza preservada. Reserve direto.',
+  title,
+  description,
   alternates: {
-    canonical: 'https://www.moitanativa.com.br/chaleAOrigem',
+    canonical: url,
   },
   openGraph: {
-    title: 'Chalé A Origem — A Moita | Refúgio Natural',
-    description:
-      'Chalé exclusivo no Cerrado. 4 hóspedes, 2 quartos, vista para a natureza preservada. Reserve direto.',
-    url: 'https://www.moitanativa.com.br/chaleAOrigem',
+    title,
+    description,
+    url,
     siteName: 'A Moita',
     images: [
       {
-        url: 'https://www.moitanativa.com.br/assets/branding/og-image.jpg',
+        url: ogImage,
         width: 1200,
         height: 630,
         alt: 'Chalé A Origem — Refúgio Natural no Cerrado',
@@ -27,10 +32,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Chalé A Origem — A Moita | Refúgio Natural',
-    description:
-      'Chalé exclusivo no Cerrado. 4 hóspedes, 2 quartos, vista para a natureza preservada.',
-    images: ['https://www.moitanativa.com.br/assets/branding/og-image.jpg'],
+    title,
+    description,
+    images: [ogImage],
   },
 }
 
