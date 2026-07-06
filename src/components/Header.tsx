@@ -41,7 +41,6 @@ export default function Header({
               />
             </Link>
 
-            {/* Desktop Navigation */}
             <div className="hidden items-center space-x-6 md:flex lg:space-x-8">
               {NAV_LINKS.map((link) => (
                 <Link
@@ -60,7 +59,6 @@ export default function Header({
               </button>
             </div>
 
-            {/* Mobile menu button */}
             <button
               className="-mr-2 p-2 text-gray-100 md:hidden"
               onClick={() => setMobileNavOpen(!mobileNavOpen)}
@@ -88,7 +86,6 @@ export default function Header({
             </button>
           </div>
 
-          {/* Mobile Navigation */}
           <div
             className={`transition-all duration-300 ease-in-out md:hidden ${
               mobileNavOpen
