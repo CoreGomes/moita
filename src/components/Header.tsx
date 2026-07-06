@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { NAV_LINKS } from '@/lib/nav-links'
 
 interface HeaderProps {
   onReserveClick: () => void
@@ -40,26 +41,16 @@ export default function Header({
               />
             </Link>
 
-            {/* Desktop Navigation */}
             <div className="hidden items-center space-x-6 md:flex lg:space-x-8">
-              <Link
-                href="/"
-                className="text-base text-gray-100 transition-colors hover:text-gold-300 lg:text-lg"
-              >
-                Início
-              </Link>
-              <Link
-                href="/#nossos-pilares"
-                className="text-base text-gray-100 transition-colors hover:text-gold-300 lg:text-lg"
-              >
-                Sobre
-              </Link>
-              <Link
-                href="/#chales"
-                className="text-base text-gray-100 transition-colors hover:text-gold-300 lg:text-lg"
-              >
-                Chalés
-              </Link>
+              {NAV_LINKS.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-base text-gray-100 transition-colors hover:text-gold-300 lg:text-lg"
+                >
+                  {link.label}
+                </Link>
+              ))}
               <button
                 onClick={onReserveClick}
                 className="rounded-full bg-gold-300 px-4 py-2 text-sm font-medium text-teal-900 transition-colors hover:bg-gold-400 lg:px-6 lg:text-base"
@@ -68,48 +59,33 @@ export default function Header({
               </button>
             </div>
 
-            {/* Mobile menu button */}
             <button
               className="-mr-2 p-2 text-gray-100 md:hidden"
               onClick={() => setMobileNavOpen(!mobileNavOpen)}
               aria-label="Toggle menu"
               aria-expanded={mobileNavOpen}
             >
-              {mobileNavOpen ? (
-                <svg
-                  className="h-8 w-8"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  className="h-8 w-8"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
-              )}
+              <svg
+                className="h-8 w-8"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d={
+                    mobileNavOpen
+                      ? 'M6 18L18 6M6 6l12 12'
+                      : 'M4 6h16M4 12h16M4 18h16'
+                  }
+                />
+              </svg>
             </button>
           </div>
 
-          {/* Mobile Navigation */}
           <div
             className={`transition-all duration-300 ease-in-out md:hidden ${
               mobileNavOpen
@@ -118,27 +94,16 @@ export default function Header({
             }`}
           >
             <div className="mt-4 space-y-2 rounded-lg bg-teal-800/95 px-4 pb-4 pt-2 shadow-lg backdrop-blur-sm">
-              <Link
-                href="/"
-                className="block rounded-md px-4 py-3 text-base font-medium text-gray-100 transition-colors hover:bg-teal-700/30"
-                onClick={() => setMobileNavOpen(false)}
-              >
-                Início
-              </Link>
-              <Link
-                href="/#nossos-pilares"
-                className="block rounded-md px-4 py-3 text-base font-medium text-gray-100 transition-colors hover:bg-teal-700/30"
-                onClick={() => setMobileNavOpen(false)}
-              >
-                Sobre
-              </Link>
-              <Link
-                href="/#chales"
-                className="block rounded-md px-4 py-3 text-base font-medium text-gray-100 transition-colors hover:bg-teal-700/30"
-                onClick={() => setMobileNavOpen(false)}
-              >
-                Chalés
-              </Link>
+              {NAV_LINKS.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="block rounded-md px-4 py-3 text-base font-medium text-gray-100 transition-colors hover:bg-teal-700/30"
+                  onClick={() => setMobileNavOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              ))}
               <button
                 onClick={() => {
                   onReserveClick()

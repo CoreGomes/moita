@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Figtree } from 'next/font/google'
 import Script from 'next/script'
+import { SITE_URL } from '@/lib/site-config'
 import './globals.css'
 
 const figtree = Figtree({
@@ -9,18 +10,49 @@ const figtree = Figtree({
   weight: ['300', '400', '500', '600', '700', '800', '900'],
 })
 
+const title = 'A Moita — Refúgio Natural | Abadiânia-GO'
+const description =
+  'Refúgio de ecoturismo no Cerrado. Chalés exclusivos às margens do Rio Capivari, em Abadiânia-GO.'
+const ogImage = `${SITE_URL}/assets/branding/og-image.jpg`
+
 export const metadata: Metadata = {
-  title: 'A Moita - Refúgio Natural',
-  description:
-    'Our commitment to green energy is paving the way for a cleaner, healthier planet. Join us on a journey towards a future where clean, renewable energy sources transform the way we power our lives.',
+  title,
+  description,
   keywords: [
-    'green energy',
-    'renewable energy',
-    'solar power',
-    'wind energy',
-    'sustainability',
+    'ecoturismo',
+    'chalé cerrado',
+    'Abadiânia',
+    'Rio Capivari',
+    'refúgio natural',
+    'hospedagem Goiás',
   ],
   authors: [{ name: 'A Moita' }],
+  alternates: {
+    canonical: SITE_URL,
+  },
+  openGraph: {
+    title,
+    description,
+    url: SITE_URL,
+    siteName: 'A Moita',
+    images: [
+      {
+        url: ogImage,
+        width: 1200,
+        height: 630,
+        alt: 'A Moita — Refúgio Natural no Cerrado',
+      },
+    ],
+    locale: 'pt_BR',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title,
+    description:
+      'Refúgio de ecoturismo no Cerrado. Chalés exclusivos às margens do Rio Capivari.',
+    images: [ogImage],
+  },
 }
 
 export const viewport: Viewport = {
@@ -39,7 +71,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={figtree.variable}>
+    <html lang="pt-BR" className={figtree.variable}>
       <head>
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
@@ -80,11 +112,7 @@ export default function RootLayout({
                     page_location: window.location.href,
                     custom_map: {
                       'custom_dimension_1': 'environment'
-                    }
-                  });
-                  
-                  // Set environment dimension
-                  gtag('config', '${GA_MEASUREMENT_ID}', {
+                    },
                     'environment': 'production'
                   });
                 `,

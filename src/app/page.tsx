@@ -4,10 +4,10 @@ import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
-import SmartCalendar from '@/components/SmartCalendar'
-import ActiveReservationBar from '@/components/ActiveReservationBar'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import SmartCalendar from '@/components/SmartCalendar'
+import ActiveReservationBar from '@/components/ActiveReservationBar'
 import { analytics } from '@/lib/analytics'
 
 // Dynamically import components with no SSR
