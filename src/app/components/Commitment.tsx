@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 export default function Commitment() {
   return (
-    <section id="chales" className="overflow-hidden py-12 lg:py-24">
+    <section className="overflow-hidden py-12 lg:py-24">
       <div className="container mx-auto px-4">
         <motion.div
           className="relative overflow-hidden rounded-3xl"
