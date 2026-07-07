@@ -237,7 +237,7 @@ export default function HomePage() {
 
       {/* Solutions Section */}
       <section id="nossos-pilares" className="bg-white p-4">
-        <div className="rounded-3xl bg-lime-500 px-5 pb-24 pt-16 xs:px-8 xl:px-12">
+        <div className="rounded-3xl bg-gold-500 px-5 pb-24 pt-16 xs:px-8 xl:px-12">
           <div className="container mx-auto px-4">
             <div className="mb-4 flex items-center">
               <svg
